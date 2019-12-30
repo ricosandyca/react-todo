@@ -8,7 +8,7 @@ const header: React.FC = () => {
   return (
     <Box my={5}>
       <Typography align='center' variant='h5'>
-        <b>react-todo-app</b>
+        <b>Kegiatan</b>
       </Typography>
     </Box>
   )
