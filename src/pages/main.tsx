@@ -51,6 +51,7 @@ export default class extends React.Component<any, IState> {
                 name='todo'
                 value={input.todo}
                 variant='outlined'
+                color='secondary'
                 label='What needs to be done?'
                 onChange={this.handleInputChange}/>
             </form>
