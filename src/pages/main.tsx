@@ -5,11 +5,23 @@ import {
   TextField,
   Box
 } from '@material-ui/core'
+import {
+  connect
+} from 'react-redux'
+import uuid from 'uuid/v1'
 
 import {
   header as Header,
-  todo as Todo
+  todo as TodoList
 } from '../components'
+import {
+  createTodo,
+  updateTodo,
+  deleteTodo
+} from '../store/actions/todo'
+
+import { RootState } from '../store/reducers'
+import { Todo } from '../store/types/todo'
 
 interface IState {
   input: {
@@ -17,7 +29,14 @@ interface IState {
   }
 }
 
-export default class extends React.Component<any, IState> {
+interface IProps {
+  todos: Todo[]
+  createTodo: typeof createTodo
+  updateTodo: typeof updateTodo
+  deleteTodo: typeof deleteTodo
+}
+
+class MainPage extends React.Component<IProps, IState> {
   state = {
     input: {
       todo: ''
@@ -36,28 +55,22 @@ export default class extends React.Component<any, IState> {
 
   handleSubmitForm = (e: React.FormEvent) => {
     e.preventDefault()
-    alert(this.state.input.todo)
+    this.props.createTodo({
+      _id: uuid(),
+      title: this.state.input.todo,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    })
+    this.setState({
+      input: {
+        todo: ''
+      }
+    })
   }
 
   render () {
     const { input } = this.state
-    const todos = [
-      {
-        title: 'Hello world',
-        done: true,
-        createdAt: new Date()
-      },
-      {
-        title: 'Foo bar',
-        done: false,
-        createdAt: new Date()
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-        done: false,
-        createdAt: new Date()
-      }
-    ]
+    const { todos, updateTodo, deleteTodo } = this.props
 
     return (
       <Container>
@@ -76,9 +89,17 @@ export default class extends React.Component<any, IState> {
             </form>
             <Box my={3}>
               {
-                todos.map((todo, i) => (
-                  <Todo
-                    key={i}
+                todos.map(todo => (
+                  <TodoList
+                    key={todo._id}
+                    onDelete={() => deleteTodo(todo._id)}
+                    onUpdate={() => updateTodo(
+                      todo._id,
+                      {
+                        ...todo,
+                        done: !todo.done
+                      }
+                    )}
                     title={todo.title}
                     done={todo.done}/>
                 ))
@@ -90,3 +111,15 @@ export default class extends React.Component<any, IState> {
     )
   }
 }
+
+const mapStateToProps = (state: RootState) => ({
+  todos: state.todo.todos
+})
+
+export default connect(
+  mapStateToProps, {
+    createTodo,
+    updateTodo,
+    deleteTodo
+  })
+  (MainPage)

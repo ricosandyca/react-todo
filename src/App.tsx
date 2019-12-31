@@ -5,7 +5,11 @@ import {
   Switch,
   RouteProps
 } from 'react-router-dom'
+import {
+  Provider
+} from 'react-redux'
 
+import store from './store'
 import {
   main as MainPage,
   about as AboutPage
@@ -28,21 +32,23 @@ const pages: RouteProps[] = [
 
 const App: React.FC = () => {
   return (
-    <Router>
-        <Switch>
-        {
-          pages.map((page, i) => (
-            <Route
-              key={i}
-              exact={page.exact}
-              path={page.path}
-              component={page.component}
-              />
-          ))
-        }
-        <Route component={NotFoundPage}/>
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router>
+          <Switch>
+          {
+            pages.map((page, i) => (
+              <Route
+                key={i}
+                exact={page.exact}
+                path={page.path}
+                component={page.component}
+                />
+            ))
+          }
+          <Route component={NotFoundPage}/>
+        </Switch>
+      </Router>
+    </Provider>
   )
 }
 

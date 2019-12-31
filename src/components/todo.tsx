@@ -15,12 +15,15 @@ import {
 } from '@material-ui/core/colors'
 
 interface IProps {
+  key: any
   title: string
   done?: boolean
+  onUpdate: () => any
+  onDelete: () => any
 }
 
 const todo: React.FC<IProps> = props => {
-  const { title, done = false } = props
+  const { title, done = false, onUpdate, onDelete } = props
   const classes = makeStyles(({
     text: { color: grey[800] }
   }))()
@@ -29,7 +32,10 @@ const todo: React.FC<IProps> = props => {
     <Paper variant='outlined' className={`todo ${done ? 'done' : ''}`}>
       <div className='item'>
         <Tooltip title='Check'>
-          <Checkbox />
+          <Checkbox
+            checked={done}
+            onChange={() => onUpdate()}
+            />
         </Tooltip>
       </div>
       <div className='item full'>
@@ -39,7 +45,7 @@ const todo: React.FC<IProps> = props => {
       </div>
       <div className='item'>
         <Tooltip title='Delete'>
-          <IconButton color='secondary'>
+          <IconButton color='secondary' onClick={() => onDelete()}>
             <DeleteOutline />
           </IconButton>
         </Tooltip>
