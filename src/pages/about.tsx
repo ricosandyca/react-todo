@@ -24,7 +24,7 @@ class AboutPage extends React.Component {
     return (
       <Container className='about'>
         <Grid container justify='center'>
-          <Grid item xs={12} md={8} lg={6}>
+          <Grid item xs={12} sm={10} md={8} lg={6}>
             <Header />
             <Divider />
             <Box className='github' my={3}>

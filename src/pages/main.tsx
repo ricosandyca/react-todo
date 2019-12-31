@@ -77,7 +77,7 @@ class MainPage extends React.Component<IProps, IState> {
     return (
       <Container>
         <Grid container justify='center'>
-          <Grid item xs={12} md={8} lg={6}>
+          <Grid item xs={12} sm={10} md={8} lg={6}>
             <Header />
             <form onSubmit={this.handleSubmitForm} autoComplete='off'>
               <TextField
