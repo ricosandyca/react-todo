@@ -7,29 +7,7 @@ import {
 } from '../types/todo'
 
 const initialState: TodoState = {
-  todos: [
-    {
-      _id: 1,
-      title: 'Hello world',
-      done: true,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    {
-      _id: 2,
-      title: 'Foo bar',
-      done: false,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    {
-      _id: 3,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-      done: false,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }
-  ]
+  todos: []
 }
 
 export default function (state = initialState, action: TodoActionTypes): TodoState {
