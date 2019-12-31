@@ -55,17 +55,19 @@ class MainPage extends React.Component<IProps, IState> {
 
   handleSubmitForm = (e: React.FormEvent) => {
     e.preventDefault()
-    this.props.createTodo({
-      _id: uuid(),
-      title: this.state.input.todo,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    })
-    this.setState({
-      input: {
-        todo: ''
-      }
-    })
+    if (this.state.input.todo !== '') {
+      this.props.createTodo({
+        _id: uuid(),
+        title: this.state.input.todo,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      })
+      this.setState({
+        input: {
+          todo: ''
+        }
+      })
+    }
   }
 
   render () {
