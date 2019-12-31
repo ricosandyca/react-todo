@@ -1,9 +1,25 @@
 import React from 'react'
+import {
+  Container,
+  Grid
+} from '@material-ui/core'
 
-const about: React.FC = () => {
-  return (
-    <h1>About page</h1>
-  )
+import {
+  header as Header
+} from '../components'
+
+class AboutPage extends React.Component {
+  render () {
+    return (
+      <Container>
+        <Grid container justify='center'>
+          <Grid item xs={12} md={8} lg={6}>
+            <Header />
+          </Grid>
+        </Grid>
+      </Container>
+    )
+  }
 }
 
-export default about
+export default AboutPage

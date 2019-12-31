@@ -78,8 +78,8 @@ class MainPage extends React.Component<IProps, IState> {
       <Container>
         <Grid container justify='center'>
           <Grid item xs={12} md={8} lg={6}>
-            <Header/>
-            <form onSubmit={this.handleSubmitForm}>
+            <Header />
+            <form onSubmit={this.handleSubmitForm} autoComplete='off'>
               <TextField
                 fullWidth
                 name='todo'
