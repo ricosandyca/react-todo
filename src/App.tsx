@@ -8,8 +8,9 @@ import {
 import {
   Provider
 } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 
-import store from './store'
+import { store, persistor } from './store'
 import {
   main as MainPage,
   about as AboutPage
@@ -33,21 +34,23 @@ const pages: RouteProps[] = [
 const App: React.FC = () => {
   return (
     <Provider store={store}>
-      <Router>
-          <Switch>
-          {
-            pages.map((page, i) => (
-              <Route
-                key={i}
-                exact={page.exact}
-                path={page.path}
-                component={page.component}
-                />
-            ))
-          }
-          <Route component={NotFoundPage}/>
-        </Switch>
-      </Router>
+      <PersistGate loading={null} persistor={persistor}>
+        <Router>
+            <Switch>
+            {
+              pages.map((page, i) => (
+                <Route
+                  key={i}
+                  exact={page.exact}
+                  path={page.path}
+                  component={page.component}
+                  />
+              ))
+            }
+            <Route component={NotFoundPage}/>
+          </Switch>
+        </Router>
+      </PersistGate>
     </Provider>
   )
 }
