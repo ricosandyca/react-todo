@@ -2,11 +2,13 @@ import React from 'react'
 import {
   Container,
   Grid,
-  TextField
+  TextField,
+  Box
 } from '@material-ui/core'
 
 import {
-  header as Header
+  header as Header,
+  todo as Todo
 } from '../components'
 
 interface IState {
@@ -39,6 +41,23 @@ export default class extends React.Component<any, IState> {
 
   render () {
     const { input } = this.state
+    const todos = [
+      {
+        title: 'Hello world',
+        done: true,
+        createdAt: new Date()
+      },
+      {
+        title: 'Foo bar',
+        done: false,
+        createdAt: new Date()
+      },
+      {
+        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+        done: false,
+        createdAt: new Date()
+      }
+    ]
 
     return (
       <Container>
@@ -55,6 +74,16 @@ export default class extends React.Component<any, IState> {
                 label='What needs to be done?'
                 onChange={this.handleInputChange}/>
             </form>
+            <Box my={3}>
+              {
+                todos.map((todo, i) => (
+                  <Todo
+                    key={i}
+                    title={todo.title}
+                    done={todo.done}/>
+                ))
+              }
+            </Box>
           </Grid>
         </Grid>
       </Container>

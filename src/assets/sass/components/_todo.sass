@@ -1,0 +1,19 @@
+.todo
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+  padding: 5px
+  margin: 5px 0
+
+  &.done
+    background: rgba(240, 240, 240, 1)
+
+  .item
+    &.full
+      padding: 5px
+      flex-grow: 1
+
+    .text
+      &.done
+        text-decoration: line-through
