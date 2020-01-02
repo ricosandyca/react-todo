@@ -16,7 +16,7 @@ import {
 } from '../components'
 import {
   createTodo,
-  updateTodo,
+  toggleTodo,
   deleteTodo
 } from '../store/actions/todo'
 
@@ -32,7 +32,7 @@ interface IState {
 interface IProps {
   todos: Todo[]
   createTodo: typeof createTodo
-  updateTodo: typeof updateTodo
+  toggleTodo: typeof toggleTodo
   deleteTodo: typeof deleteTodo
 }
 
@@ -72,7 +72,7 @@ class MainPage extends React.Component<IProps, IState> {
 
   render () {
     const { input } = this.state
-    const { todos, updateTodo, deleteTodo } = this.props
+    const { todos, toggleTodo, deleteTodo } = this.props
 
     return (
       <Container>
@@ -95,13 +95,7 @@ class MainPage extends React.Component<IProps, IState> {
                   <TodoList
                     key={todo._id}
                     onDelete={() => deleteTodo(todo._id)}
-                    onUpdate={() => updateTodo(
-                      todo._id,
-                      {
-                        ...todo,
-                        done: !todo.done
-                      }
-                    )}
+                    onUpdate={() => toggleTodo(todo._id)}
                     title={todo.title}
                     done={todo.done}/>
                 ))
@@ -121,7 +115,7 @@ const mapStateToProps = (state: RootState) => ({
 export default connect(
   mapStateToProps, {
     createTodo,
-    updateTodo,
+    toggleTodo,
     deleteTodo
   })
   (MainPage)

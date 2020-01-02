@@ -1,6 +1,6 @@
 import {
   CREATE_TODO,
-  UPDATE_TODO,
+  TOGGLE_TODO,
   DELETE_TODO,
   TodoState,
   TodoActionTypes
@@ -22,12 +22,12 @@ export default function (state = initialState, action: TodoActionTypes): TodoSta
         ]
       }
 
-    case UPDATE_TODO:
+    case TOGGLE_TODO:
       return {
         ...state,
         todos: state.todos.map(todo => (
-          todo._id === action.payload._id
-            ? action.payload.data
+          todo._id === action.payload
+            ? { ...todo, done: !todo.done }
             : todo
         ))
       }

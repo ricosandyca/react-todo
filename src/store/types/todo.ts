@@ -13,7 +13,7 @@ export interface TodoState {
 }
 
 export const CREATE_TODO = 'CREATE_TODO'
-export const UPDATE_TODO = 'UPDATE_TODO'
+export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const DELETE_TODO = 'DELETE_TODO'
 
 interface CreateTodoAction {
@@ -21,12 +21,9 @@ interface CreateTodoAction {
   payload: Todo
 }
 
-interface UpdateTodoAction {
-  type: typeof UPDATE_TODO
-  payload: {
-    _id: Todo_Id
-    data: Todo
-  }
+interface ToggleTodoAction {
+  type: typeof TOGGLE_TODO
+  payload: Todo_Id
 }
 
 interface DeleteTodoAction {
@@ -36,5 +33,5 @@ interface DeleteTodoAction {
 
 export type TodoActionTypes =
   CreateTodoAction |
-  UpdateTodoAction |
+  ToggleTodoAction |
   DeleteTodoAction

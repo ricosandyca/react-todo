@@ -1,6 +1,6 @@
 import {
   CREATE_TODO,
-  UPDATE_TODO,
+  TOGGLE_TODO,
   DELETE_TODO,
   Todo,
   Todo_Id,
@@ -14,13 +14,10 @@ export function createTodo (newTodo: Todo): TodoActionTypes {
   }
 }
 
-export function updateTodo (_id: Todo_Id, updateTodo: Todo): TodoActionTypes {
+export function toggleTodo (_id: Todo_Id): TodoActionTypes {
   return {
-    type: UPDATE_TODO,
-    payload: {
-      _id,
-      data: updateTodo
-    }
+    type: TOGGLE_TODO,
+    payload: _id
   }
 }
 
