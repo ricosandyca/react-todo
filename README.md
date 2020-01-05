@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # React Todo
-Simple React todo app
+Simple React todo app https://kegiatan.now.sh/
 
 <p align="center"><img src="https://github.com/ricosandyca/react-todo/blob/master/preview/kegiatan.gif"/></p>
 
