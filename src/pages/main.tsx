@@ -6,6 +6,7 @@ import {
   Box
 } from '@material-ui/core'
 import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import uuid from 'uuid/v1'
 
 import {
@@ -14,27 +15,32 @@ import {
   deleteTodo
 } from '../store/actions/todo'
 import { RootState } from '../store/reducers'
-import { Todo } from '../store/types/todo'
+import { RootActions } from '../store/types/_root'
+import { Todo_Id, Todo } from '../store/types/todo'
 
 import {
   header as Header,
   todo as TodoList
 } from '../components'
 
-interface IState {
+const mapStateToProps = ({ todo }: RootState) => ({ todo })
+const mapDispatchToProps = (dispatch: Dispatch<RootActions>) => ({
+  createTodo: (todo: Todo) => dispatch(createTodo(todo)),
+  toggleTodo: (id: Todo_Id) => dispatch(toggleTodo(id)),
+  deleteTodo: (id: Todo_Id) => dispatch(deleteTodo(id))
+})
+
+type TState = {
   input: {
     [name: string]: string
   }
 }
 
-interface IProps {
-  todos: Todo[]
-  createTodo: typeof createTodo
-  toggleTodo: typeof toggleTodo
-  deleteTodo: typeof deleteTodo
-}
+type TProps =
+  ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatchToProps>
 
-class MainPage extends React.Component<IProps, IState> {
+class MainPage extends React.Component<TProps, TState> {
   state = {
     input: {
       todo: ''
@@ -70,7 +76,11 @@ class MainPage extends React.Component<IProps, IState> {
 
   render () {
     const { input } = this.state
-    const { todos, toggleTodo, deleteTodo } = this.props
+    const {
+      todo: { todos },
+      toggleTodo,
+      deleteTodo
+    } = this.props
 
     return (
       <Container>
@@ -106,14 +116,7 @@ class MainPage extends React.Component<IProps, IState> {
   }
 }
 
-const mapStateToProps = (state: RootState) => ({
-  todos: state.todo.todos
-})
-
 export default connect(
-  mapStateToProps, {
-    createTodo,
-    toggleTodo,
-    deleteTodo
-  })
-  (MainPage)
+  mapStateToProps,
+  mapDispatchToProps
+)(MainPage)
