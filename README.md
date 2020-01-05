@@ -3,8 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # React Todo
 Simple React todo app
 
-## App Preview
-<img style="display: block; margin-left: auto" src="https://github.com/ricosandyca/react-todo/blob/master/preview/kegiatan.gif"/>
+<p align="center"><img src="https://github.com/ricosandyca/react-todo/blob/master/preview/kegiatan.gif"/></p>
 
 ## Quick Start
 <ol>
