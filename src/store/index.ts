@@ -17,7 +17,7 @@ declare global {
 const persistConfig: PersistConfig<RootState> = {
   key: 'root',
   storage,
-  whitelist: ['todo']
+  whitelist: ['todo', 'option']
 }
 const persistedReducer = persistReducer(persistConfig, reducer)
 

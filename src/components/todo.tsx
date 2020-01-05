@@ -7,12 +7,8 @@ import {
   Typography,
   Tooltip
 } from '@material-ui/core'
-import {
-  DeleteOutline
-} from '@material-ui/icons'
-import {
-  grey
-} from '@material-ui/core/colors'
+import { DeleteOutline } from '@material-ui/icons'
+import { grey } from '@material-ui/core/colors'
 
 interface IProps {
   key: any

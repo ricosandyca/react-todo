@@ -5,23 +5,21 @@ import {
   TextField,
   Box
 } from '@material-ui/core'
-import {
-  connect
-} from 'react-redux'
+import { connect } from 'react-redux'
 import uuid from 'uuid/v1'
 
-import {
-  header as Header,
-  todo as TodoList
-} from '../components'
 import {
   createTodo,
   toggleTodo,
   deleteTodo
 } from '../store/actions/todo'
-
 import { RootState } from '../store/reducers'
 import { Todo } from '../store/types/todo'
+
+import {
+  header as Header,
+  todo as TodoList
+} from '../components'
 
 interface IState {
   input: {

@@ -1,5 +1,19 @@
 @import 'pages/_'
 @import 'components/_'
 
+@mixin filter ($val)
+  -webkit-filter: invert($val)
+     -moz-filter: invert($val)
+      -ms-filter: invert($val)
+       -o-filter: invert($val)
+          filter: invert($val)
+
 .link
   text-decoration: none !important
+
+body
+  background: white
+
+  &.dark-theme
+    background: black
+    @include filter (100%)

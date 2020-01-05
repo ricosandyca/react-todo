@@ -1,14 +1,10 @@
 import React from 'react'
-import {
-  Link
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
   Button,
   makeStyles
 } from '@material-ui/core'
-import {
-  grey
-} from '@material-ui/core/colors'
+import { grey } from '@material-ui/core/colors'
 
 const notfound: React.FC = () => {
   const status = 404

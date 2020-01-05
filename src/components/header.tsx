@@ -32,6 +32,10 @@ const header: React.FC = (props: RouteProps) => {
       name: 'Home'
     },
     {
+      path: '/option',
+      name: 'Option'
+    },
+    {
       path: '/about',
       name: 'About'
     }

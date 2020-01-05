@@ -15,9 +15,7 @@ import {
   GitHub
 } from '@material-ui/icons'
 
-import {
-  header as Header
-} from '../components'
+import { header as Header } from '../components'
 
 class AboutPage extends React.Component {
   render () {
