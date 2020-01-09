@@ -1,6 +1,6 @@
 {
   "short_name": "Kegiatan",
-  "_name": "Create React App Sample",
+  "name": "by: ricosandyca",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#ff0000",
-  "background_color": "#0000ff"
+  "theme_color": "#000000",
+  "background_color": "#000000"
 }
