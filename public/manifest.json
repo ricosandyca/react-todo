@@ -1,6 +1,6 @@
 {
   "short_name": "Kegiatan",
-  "name": "by: ricosandyca",
+  "name": "",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "black-translucent",
   "background_color": "#000000"
 }
